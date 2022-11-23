@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Todos</title>
+</head>
+<body class="bg-black">
+
+  <div class="container">
+    <div class="box">
+      <div class="text-center mb-5">
+        <h1 class="text-white">Todos</h1>
+      </div>
+      <form class="js-form-todo w-75 mx-auto mb-4">
+        <div class="input-group w-75 mx-auto">
+          <input class="js-todo-input form-control" name="todo_value" type="text" placeholder="Enter your todo ...">
+          <button class="js-smb-btn btn btn-success btn-success" type="submit">Add</button>
+        </div>
+      </form>
+
+      <ul class="list-todo row w-75 mx-auto rounded-3 list-unstyled">
+
+      </ul>
+    </div>
+  </div>
+
+  <template class="item-temp">
+    <li class="col-12 col-md-6 mb-3 w-100 ">
+      <div class="d-flex align-items-center justify-content-between bg-info w-100 rounded-2 py-3 px-2">
+        <div class="text-wrap d-flex">
+          <span class="user-id me-2">1</span>
+          <p class="d-inline-block me-2 mb-0 user-todo ">qqqqqqqq</p>
+        </div>
+        <div>
+          <button class="delete-btn btn btn-danger me-1">Delete</button>
+          <button class="edit-btn btn btn-success" type="button">Edit</button>
+        </div>
+      </div>
+    </li>
+  </template>
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Change text</h1>
+        </div>
+        <form class="js-change-form">
+          <div class="modal-body">
+            <input class="form-control js-change-input" type="text">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary save-btn " data-bs-dismiss="modal">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
