@@ -6,10 +6,9 @@ if(!loginToken){
 const elFormTodo = document.querySelector(".js-form-todo");
 const elFormTodoInput = document.querySelector(".js-todo-input");
 const elTodoList = document.querySelector(".list-todo");
-// const editForm = document.querySelector(".js-change-form");
-// const editInput = editForm.querySelector(".js-change-input");
+const editForm = document.querySelector(".js-change-form");
+const editInput = editForm.querySelector(".js-change-input");
 const editBtn = document.querySelector(".edit-btn");
-const saveBtn = document.querySelector(".save-btn");
 const todoTemp = document.querySelector(".item-temp").content;
 // const modal = document.querySelector(".modal");
 const frag = new DocumentFragment();
@@ -61,29 +60,13 @@ async function postTodos(){
 }
 
 getTodos();
-let changeText ;
 
-async function editTodos(id){
+elFormTodo.addEventListener("submit", evt => {
+  evt.preventDefault();
+  postTodos();
+  getTodos();
+})
 
-  const newText = prompt("enter change word")
-  console.log(changeText);
-  try {
-    const res = await fetch(`http://localhost:5000/todo/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: loginToken
-    },
-    body: JSON.stringify({
-      text: newText,
-    })
-  });
-  const data = await res.json();
-  getTodos()
-} catch (error) {
-  console.log(error);
-}
-}
 
 async function deleteTodos(id){
   try {
@@ -102,16 +85,42 @@ async function deleteTodos(id){
   console.log(error);
 }
 }
-changeText
+
+let changeText = "";
 
 elTodoList.addEventListener("click", evt =>{
   if(evt.target.matches(".edit-btn")){
     const editBtnId = evt.target.dataset.id;
-    console.log(editBtnId);
-    editTodos(editBtnId);
+    editForm.addEventListener("submit", evt => {
+      evt.preventDefault();
+      changeText = editInput.value.trim();
+      editTodos(editBtnId, changeText);
+      editForm.reset()
+    });
   }
   if(evt.target.matches(".delete-btn")){
     const deleteBtnId = evt.target.dataset.id;
     deleteTodos(deleteBtnId);
   }
-})
+});
+
+
+async function editTodos(id, changeText){
+
+  try {
+    const res = await fetch(`http://localhost:5000/todo/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: loginToken
+    },
+    body: JSON.stringify({
+      text: changeText,
+    })
+  });
+  const data = await res.json();
+  getTodos()
+} catch (error) {
+  console.log(error);
+}
+}

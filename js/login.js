@@ -37,3 +37,19 @@ elForm.addEventListener("submit", (evt)=>{
   evt.preventDefault();
   login()
 })
+
+// const array = [];
+// function getArr (arr){
+//   const set = new Set(arr);
+//   set.forEach(elem => {
+//     array.push(elem)
+//   });
+//   console.log(array);
+// }
+
+// function getArr(arr){
+//   // return Array.from(new Set(arr))
+//   return [... new Set(arr)]
+// }
+// console.log(getArr([1,2,2,2,2,2,2,2,2,3,3,3,3,3,4,3,4]));
+// getArr([1,2,2,2,2,2,2,2,2,3,3,3,3,3,4,3,4]);
